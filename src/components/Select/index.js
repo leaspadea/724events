@@ -31,13 +31,30 @@ const Select = ({
           {!collapsed && (
             <>
               {!titleEmpty && (
-                <li onClick={() => changeValue(null)}>
+                <li
+                  role="option"
+                  aria-selected={!value}
+                  tabIndex={0}
+                  onClick={() => changeValue(null)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") changeValue(null);
+                  }}
+                >
                   <input defaultChecked={!value} name="selected" type="radio" />{" "}
                   Toutes
                 </li>
               )}
               {selection.map((s) => (
-                <li key={s} onClick={() => changeValue(s)}>
+                <li
+                  key={s}
+                  role="option"
+                  aria-selected={value === s}
+                  tabIndex={0}
+                  onClick={() => changeValue(s)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") changeValue(s);
+                  }}
+                >
                   <input
                     defaultChecked={value === s}
                     name="selected"
