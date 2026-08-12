@@ -71,6 +71,8 @@ const Select = ({
           type="button"
           data-testid="collapse-button-testid"
           className={collapsed ? "open" : "close"}
+          aria-label="Ouvrir ou fermer la liste des catégories"
+          aria-expanded={!collapsed}
           onClick={(e) => {
             e.preventDefault();
             setCollapsed(!collapsed);
